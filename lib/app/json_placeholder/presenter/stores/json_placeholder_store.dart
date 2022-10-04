@@ -1,7 +1,7 @@
 import 'package:api_/app/json_placeholder/infra/models/json_placeholder_model.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../external/data_source/get_json_placeholder_ds.dart';
+import '../../external/data_source/json_placeholder_ds.dart';
 
 part 'json_placeholder_store.g.dart';
 

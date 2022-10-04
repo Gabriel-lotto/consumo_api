@@ -1,4 +1,4 @@
-import 'package:api_/app/json_placeholder/external/data_source/get_json_placeholder_ds.dart';
+import 'package:api_/app/json_placeholder/external/data_source/json_placeholder_ds.dart';
 import 'package:api_/app/json_placeholder/presenter/pages/json_placeholder_page.dart';
 import 'package:api_/app/json_placeholder/presenter/stores/json_placeholder_store.dart';
 import 'package:dio/dio.dart';
