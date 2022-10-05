@@ -1,17 +1,16 @@
 import 'package:dio/dio.dart';
 
 import '../errors/error_api.dart';
-import 'dio_repository.dart';
+import '../network_interface/network_repository.dart';
 
-class DioNetworkImpl implements DioNetworkRepository {
-  final String baseUrl = 'https://jsonplaceholder.typicode.com/';
+class DioNetworkImpl implements NetWorkRepository {
   final Dio api;
   DioNetworkImpl(this.api);
 
   @override
   Future<Response> get(String url) async {
     try {
-      final response = await api.get(baseUrl + url);
+      final response = await api.get(url);
       return response;
     } on DioError catch (e) {
       throw ApiErrors(
@@ -24,7 +23,7 @@ class DioNetworkImpl implements DioNetworkRepository {
   @override
   Future<Response> post(String url, data) async {
     try {
-      final response = await api.post(baseUrl + url, data: data);
+      final response = await api.post(url, data: data);
       return response;
     } on DioError catch (e) {
       throw ApiErrors(
@@ -37,7 +36,7 @@ class DioNetworkImpl implements DioNetworkRepository {
   @override
   Future<Response> put(String url, data) async {
     try {
-      final response = await api.put(baseUrl + url, data: data);
+      final response = await api.put(url, data: data);
       return response;
     } on DioError catch (e) {
       throw ApiErrors(
@@ -50,7 +49,7 @@ class DioNetworkImpl implements DioNetworkRepository {
   @override
   Future<Response> delete(String url, data) async {
     try {
-      final response = await api.delete(baseUrl + url, data: data);
+      final response = await api.delete(url, data: data);
       return response;
     } on DioError catch (e) {
       throw ApiErrors(
