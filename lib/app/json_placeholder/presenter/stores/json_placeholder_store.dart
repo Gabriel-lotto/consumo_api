@@ -8,18 +8,18 @@ part 'json_placeholder_store.g.dart';
 class JsonPlaceholderStore = _JsonPlaceholderStoreBase with _$JsonPlaceholderStore;
 
 abstract class _JsonPlaceholderStoreBase with Store {
-  ///UseCase que lista o json do jsonPlaceholder
+  ///Método que lista o json do jsonPlaceholder
   final GetJsonPlaceholderDS _getJsonPlaceholder;
 
   _JsonPlaceholderStoreBase(this._getJsonPlaceholder);
 
   @observable
-  ObservableList<JsonPlaceholderModel> jsonPlaceholderList = ObservableList();
+  List<JsonPlaceholderModel> jsonPlaceholderList = [];
 
   @action
   Future<void> getJsonPlaceholder() async {
     var result = await _getJsonPlaceholder.getJsonPlaceholder();
 
-    jsonPlaceholderList = result.asObservable();
+    jsonPlaceholderList = result;
   }
 }

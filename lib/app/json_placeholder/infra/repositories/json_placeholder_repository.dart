@@ -11,7 +11,7 @@ class JsonPlaceholderRepositoryImpl implements JsonPlaceholderRepository {
     var result;
     try {
       result = await ds.getJsonPlaceholder();
-      return [JsonPlaceholderModel.fromMap(result)];
+      return result;
     } catch (e) {
       rethrow;
     }

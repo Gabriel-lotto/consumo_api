@@ -7,15 +7,20 @@ import '../../infra/data_source/json_placeholder_ds_interface.dart';
 
 class GetJsonPlaceholderDS implements IGetJsonPlaceholderDS {
   final DioNetworkImpl api;
-
+  var calls = 0;
   GetJsonPlaceholderDS(this.api);
 
   @override
   Future<List<JsonPlaceholderModel>> getJsonPlaceholder() async {
     try {
-      var response = await api.get('todos');
+      var result;
+      var response = await api.get('https://jsonplaceholder.typicode.com/todos');
+      if (response.statusCode == 200) {
+        var jsonList = (response.data as List).map((value) => JsonPlaceholderModel.fromMap(value)).toList();
 
-      return (response.data as List).map((value) => JsonPlaceholderModel.fromMap(value)).toList();
+        result = jsonList;
+      }
+      return result;
     } on DioError catch (e) {
       throw JsonPlaceholderError(e.message);
     }
